@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Matrix Multiplication</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'HelveticaNeue-Light', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="matrix-multiplication">Matrix Multiplication</h1>
+<p>In <em>multiplier.c</em> and <em>multiplier.h</em> <br>
+This program contains two important function: <br>
+<em>matrix_multiply</em> and <em>sparse_matrix_multiply</em> <br>
+They both perform the same task: Matrix Multiplication X x Y = Z <br>
+The first one use dense algorithm, the second one use sparse algorithm</p>
+<h1 id="dense-algorithm">Dense algorithm</h1>
+<p>This algorithm start with every cell in the final answer <br>
+answer Z[r][c] = rth Row in X inner product with cth Column in Y. <br>
+The complexity is O(x_rows * y_cols * x_cols). <br>
+<br>
+In this case, X, Y, Z are represented as it is</p>
+<h1 id="sparse-algorithm">Sparse algorithm</h1>
+<p>This algorithm start with X and Y <br>
+Every X[x][i] multiply Y[i][y] will be a part of summation of answer Z[x][y] <br>
+Therefore, we start with a Z that is all zero, and add every X[x][i] multiply Y[i][y] <br>
+to it. <br>
+The complexity is O(x_size * y_size) <br>
+when X and Y are sparse, this is a much lower complexity <br>
+<br>
+In this case X and Y are represented differently: <br>
+they are arrays of non-zero value with its coordinate <br>
+in the form of {row, col, value} <br>
+and X and Y looks like {{row0, col0, value0}, {row1, col1, value1}, ... } <br>
+This avoids storing zero value element in memory <br>
+for ease of testing, the representation of Z is unchanged.</p>
+
+    </body>
+    </html>
